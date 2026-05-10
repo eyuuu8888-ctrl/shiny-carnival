@@ -1,5 +1,5 @@
-# LLM
-openai>=1.30.0          # OpenAI / DeepSeek / 通义千问 / 任何兼容 OpenAI 协议的服务
+# LLM: OpenAI / DeepSeek / Qwen / any OpenAI-compatible API
+openai>=1.30.0
 
 # Config
 pyyaml>=6.0
@@ -9,5 +9,5 @@ python-dotenv>=1.0.0
 loguru>=0.7.0
 
 # WeChat adapter (Windows only, Python 3.9 - 3.13)
-# wxauto / wxautox 目前都不支持 Python 3.14+，请用 Python 3.12
+# wxauto / wxautox do NOT support Python 3.14+ yet. Use Python 3.12.
 wxauto>=3.9.11; sys_platform == "win32" and python_version < "3.14"
