@@ -34,12 +34,22 @@ class WxAutoAdapter(ChatAdapter):
         self._thread: Optional[threading.Thread] = None
 
     def _init_wx(self) -> None:
+        # 优先使用 wxautox (V2 新版，由 wxauto 原作者 cluic 维护)，
+        # 找不到时回退到旧版 wxauto。两者 API 基本兼容。
         try:
-            from wxauto import WeChat  # type: ignore
-        except ImportError as e:
-            raise RuntimeError(
-                "未安装 wxauto，请在 Windows 上执行: pip install wxauto"
-            ) from e
+            from wxautox import WeChat  # type: ignore
+            logger.info("使用 wxautox (V2) 作为微信适配后端")
+        except ImportError:
+            try:
+                from wxauto import WeChat  # type: ignore
+                logger.info("使用 wxauto (V1) 作为微信适配后端")
+            except ImportError as e:
+                raise RuntimeError(
+                    "未安装微信适配库，请在 Windows + Python 3.12 下执行:\n"
+                    "    pip install wxautox\n"
+                    "或者:\n"
+                    "    pip install wxauto"
+                ) from e
 
         self._wx = WeChat()
         try:

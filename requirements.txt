@@ -9,5 +9,6 @@ python-dotenv>=1.0.0
 loguru>=0.7.0
 
 # WeChat adapter (Windows only, Python 3.9 - 3.13)
-# wxauto / wxautox do NOT support Python 3.14+ yet. Use Python 3.12.
-wxauto>=3.9.11; sys_platform == "win32" and python_version < "3.14"
+# wxautox is the V2 rewrite of wxauto by the same author (cluic).
+# If wxautox is unavailable, you can alternatively `pip install wxauto` manually.
+wxautox>=39.1.0; sys_platform == "win32" and python_version < "3.14"
