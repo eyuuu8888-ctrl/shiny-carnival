@@ -1,0 +1,24 @@
+{
+  "name": "linuxdo-summary",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Linux.do 帖子 AI 智能总结工具（油猴脚本 + 浏览器扩展双版本）",
+  "packageManager": "pnpm@9.15.0",
+  "scripts": {
+    "build": "pnpm -r --filter=./packages/* build",
+    "build:userscript": "pnpm --filter @linuxdo-summary/userscript build",
+    "build:extension": "pnpm --filter @linuxdo-summary/extension build",
+    "build:extension:firefox": "pnpm --filter @linuxdo-summary/extension build:firefox",
+    "dev:userscript": "pnpm --filter @linuxdo-summary/userscript dev",
+    "dev:extension": "pnpm --filter @linuxdo-summary/extension dev",
+    "typecheck": "pnpm -r --parallel typecheck",
+    "clean": "pnpm -r exec rm -rf dist .output .wxt node_modules/.vite"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.3",
+    "prettier": "^3.3.3"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
